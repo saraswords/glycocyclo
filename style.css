@@ -153,3 +153,43 @@ button:hover {
     font-size: 12px;
   }
 }
+
+/* MOBILE TOUCH IMPROVEMENTS */
+@media (max-width: 600px) {
+
+  button {
+    padding: 12px 20px;
+    font-size: 16px; /* easier tapping */
+  }
+
+  .zone {
+    width: 120px;
+    height: 32px;
+  }
+
+  .choice {
+    height: 32px;
+    font-size: 14px;
+  }
+
+}
+
+/* MOBILE TOUCH IMPROVEMENTS */
+@media (max-width: 600px) {
+
+  button {
+    padding: 12px 20px;
+    font-size: 16px; /* easier tapping */
+  }
+
+  .zone {
+    width: 120px;
+    height: 32px;
+  }
+
+  .choice {
+    height: 32px;
+    font-size: 14px;
+  }
+
+}

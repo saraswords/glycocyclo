@@ -30,25 +30,25 @@ const data = {
       product: "Glucose-6-phosphate",
       enzyme: "Hexokinase",
       productPos: { x: 0.50, y: 0.20 },
-      enzymePos: { x: 0.85, y: 0.18 }
+      enzymePos: { x: 0.86, y: 0.15 }
     },
     {
       product: "Fructose-6-phosphate",
       enzyme: "Phosphoglucose isomerase",
       productPos: { x: 0.50, y: 0.28 },
-      enzymePos: { x: 0.85, y: 0.26 }
+      enzymePos: { x: 0.86, y: 0.23 }
     },
     {
       product: "Fructose-1,6-bisphosphate",
       enzyme: "PFK-1",
       productPos: { x: 0.50, y: 0.36 },
-      enzymePos: { x: 0.85, y: 0.34 }
+      enzymePos: { x: 0.86, y: 0.32 }
     },
     {
       product: "DHAP",
       enzyme: "Aldolase",
       productPos: { x: 0.44, y: 0.46 },
-      enzymePos: { x: 0.85, y: 0.43 }
+      enzymePos: { x: 0.86, y: 0.40 }
     },
     {
       product: "G3P",
@@ -59,31 +59,31 @@ const data = {
       product: "1,3-bisphosphoglycerate",
       enzyme: "G3P dehydrogenase",
       productPos: { x: 0.50, y: 0.56 },
-      enzymePos: { x: 0.85, y: 0.52 }
+      enzymePos: { x: 0.86, y: 0.48 }
     },
     {
       product: "3-phosphoglycerate",
       enzyme: "Phosphoglycerate kinase",
       productPos: { x: 0.50, y: 0.64 },
-      enzymePos: { x: 0.85, y: 0.60 }
+      enzymePos: { x: 0.86, y: 0.56 }
     },
     {
       product: "2-phosphoglycerate",
       enzyme: "Phosphoglycerate mutase",
       productPos: { x: 0.50, y: 0.72 },
-      enzymePos: { x: 0.85, y: 0.68 }
+      enzymePos: { x: 0.86, y: 0.65 }
     },
     {
       product: "Phosphoenolpyruvate",
       enzyme: "Enolase",
       productPos: { x: 0.50, y: 0.80 },
-      enzymePos: { x: 0.85, y: 0.78 }
+      enzymePos: { x: 0.86, y: 0.73 }
     },
     {
       product: "Pyruvate",
       enzyme: "Pyruvate kinase",
       productPos: { x: 0.50, y: 0.88 },
-      enzymePos: { x: 0.85, y: 0.88 }
+      enzymePos: { x: 0.86, y: 0.83 }
     }
   ]
 };
@@ -119,11 +119,8 @@ function startGame(pathway, mode) {
   renderChoices();
 }
 
-// STATS
 function updateStats() {
-  document.getElementById("score").innerText = score;
-  document.getElementById("atp").innerText = atp;
-  document.getElementById("nadh").innerText = nadh;
+  // stats removed for cleaner UI
 }
 
 // ZONES

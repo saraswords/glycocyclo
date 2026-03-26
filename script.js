@@ -240,6 +240,8 @@ function handleDrop(step, zone) {
   draggedItem = null;
   selectedItem = null;
 
+  document.querySelectorAll(".choice").forEach(c => c.style.background = "white");
+
   checkFinished();
 }
 

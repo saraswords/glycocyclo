@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GlycoCyclo</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,21 +21,19 @@
     If you're feeling confident, try <b>hardcore mode!</b>
   </p>
 
+  <!-- ACTIVE -->
   <button class="active-btn" onclick="startGame('glycolysis','enzymes')">
     Enzymes Mode
   </button>
 
+  <!-- COMING SOON (mobile + desktop safe) -->
   <button class="disabled-btn"
-    onmouseover="showComingSoon(this, 'Products Mode')"
-    onmouseout="resetButton(this, 'Products Mode')"
-    ontouchstart="showComingSoon(this, 'Products Mode')">
+    onclick="showComingSoon(this, 'Products Mode'); setTimeout(() => resetButton(this, 'Products Mode'), 1200)">
     Products Mode
   </button>
 
   <button class="disabled-btn"
-    onmouseover="showComingSoon(this, 'Hardcore Mode')"
-    onmouseout="resetButton(this, 'Hardcore Mode')"
-    ontouchstart="showComingSoon(this, 'Hardcore Mode')">
+    onclick="showComingSoon(this, 'Hardcore Mode'); setTimeout(() => resetButton(this, 'Hardcore Mode'), 1200)">
     Hardcore Mode
   </button>
 

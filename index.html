@@ -12,30 +12,54 @@
 <div id="home">
 
   <div id="home-header">
-    <h1>GlycoCyclo</h1>
+    <h1>GlycoCyco</h1>
     <img src="assets/glucose.png" id="glucose-hero">
   </div>
 
   <p>
-    Drag and drop the enzymes or molecules to their correct spot on the glycolysis diagram.<br><br>
+    Drag and drop the enzymes or molecules to their correct spot on the metabolic pathway diagrams.<br><br>
     If you're feeling confident, try <b>hardcore mode!</b>
   </p>
 
-  <!-- ACTIVE -->
-  <button class="active-btn" onclick="startGame('glycolysis','enzymes')">
-    Enzymes Mode
+  <!-- GLYCOLYSIS -->
+  <div class="pathway-section">
+    <h2>Glycolysis</h2>
+
+    <button class="active-btn" onclick="startGame('glycolysis','enzymes')">
+      Enzymes
+    </button>
+
+    <button class="disabled-btn"
+      onclick="showComingSoon(this, 'Products'); setTimeout(() => resetButton(this, 'Products'), 1200)">
+      Products
+    </button>
+
+    <button class="disabled-btn"
+      onclick="showComingSoon(this, 'Hardcore'); setTimeout(() => resetButton(this, 'Hardcore'), 1200)">
+      Hardcore
+    </button>
+  </div>
+
+  <!-- CAC -->
+  <div class="pathway-section">
+  <h2>Citric Acid Cycle</h2>
+
+  <button class="disabled-btn"
+    onclick="showComingSoon(this, 'Enzymes'); setTimeout(() => resetButton(this, 'Enzymes'), 1200)">
+    Enzymes
   </button>
 
-  <!-- COMING SOON (mobile + desktop safe) -->
   <button class="disabled-btn"
-    onclick="showComingSoon(this, 'Products Mode'); setTimeout(() => resetButton(this, 'Products Mode'), 1200)">
-    Products Mode
+    onclick="showComingSoon(this, 'Products'); setTimeout(() => resetButton(this, 'Products'), 1200)">
+    Products
   </button>
 
   <button class="disabled-btn"
-    onclick="showComingSoon(this, 'Hardcore Mode'); setTimeout(() => resetButton(this, 'Hardcore Mode'), 1200)">
-    Hardcore Mode
+    onclick="showComingSoon(this, 'Hardcore'); setTimeout(() => resetButton(this, 'Hardcore'), 1200)">
+    Hardcore
   </button>
+</div>
+  </div>
 
 </div>
 
@@ -43,12 +67,6 @@
 <div id="game" style="display:none;">
 
   <h2 id="mode-title"></h2>
-
-  <div id="stats">
-    Score: <span id="score">0</span> |
-    ATP: <span id="atp">0</span> |
-    NADH: <span id="nadh">0</span>
-  </div>
 
   <div id="game-container">
     <img id="background" src="">

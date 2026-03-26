@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GlycoCyco</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HOME SCREEN -->
+<div id="home">
+
+  <div id="home-header">
+    <h1>GlycoCyco</h1>
+    <img src="assets/glucose.png" id="glucose-hero">
+  </div>
+
+  <p>
+    Drag and drop the enzymes or molecules to their correct spot on the glycolysis diagram.<br><br>
+    If you're feeling confident, try <b>hardcore mode!</b>
+  </p>
+
+  <button class="active-btn" onclick="startGame('glycolysis','enzymes')">
+    Enzymes Mode
+  </button>
+
+  <button class="disabled-btn"
+    onmouseover="showComingSoon(this, 'Products Mode')"
+    onmouseout="resetButton(this, 'Products Mode')"
+    ontouchstart="showComingSoon(this, 'Products Mode')">
+    Products Mode
+  </button>
+
+  <button class="disabled-btn"
+    onmouseover="showComingSoon(this, 'Hardcore Mode')"
+    onmouseout="resetButton(this, 'Hardcore Mode')"
+    ontouchstart="showComingSoon(this, 'Hardcore Mode')">
+    Hardcore Mode
+  </button>
+
+</div>
+
+<!-- GAME SCREEN -->
+<div id="game" style="display:none;">
+
+  <h2 id="mode-title"></h2>
+
+  <div id="stats">
+    Score: <span id="score">0</span> |
+    ATP: <span id="atp">0</span> |
+    NADH: <span id="nadh">0</span>
+  </div>
+
+  <div id="game-container">
+    <img id="background" src="">
+    <div id="overlay"></div>
+  </div>
+
+  <div id="choices"></div>
+
+  <br>
+  <button onclick="goHome()">← Back</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

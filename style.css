@@ -9,66 +9,43 @@ body {
   background: white;
 }
 
-/* HOME */
-#home {
-  margin-top: 80px;
+#mode-title {
+  display: none;
 }
 
-#home-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+/* HOME */
+#home {
+  margin-top: 60px;
 }
 
 #glucose-hero {
   width: 80px;
-  opacity: 0.9;
-  pointer-events: none;
 }
 
-#home p {
-  max-width: 500px;
-  margin: 20px auto;
+.coming-soon {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.6;
 }
 
-/* BUTTONS */
 button {
   margin: 8px;
   padding: 10px 18px;
-
-  border-radius: 10px; 
-
+  border-radius: 10px;
   border: 1px solid #ddd;
   background: #f5f5f5;
-
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover {
   background: #e0e0e0;
 }
 
-.active-btn {
-  cursor: pointer;
-}
-
-.disabled-btn {
-  background: #f5f5f5;
-  color: #999;
-  cursor: not-allowed;
-}
-
 /* GAME */
-#game {
-  padding: 10px;
-}
-
 #background {
-  width: 85vw;
+  width: 90vw;
   max-width: 500px;
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 #game-container {
@@ -87,30 +64,45 @@ button:hover {
 /* ZONES */
 .zone {
   position: absolute;
-
   width: 110px;
-  height: 28px;
+  height: 22px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 10px; 
-
-  background: rgba(0, 0, 0, 0.05);  
-  border: 1px dashed rgba(0, 0, 0, 0.15);
+  background: rgba(0,0,0,0.05);
+  border: 1px dashed #ccc;
+  border-radius: 10px;
 
   font-size: 11px;
-  padding: 2px 8px;
 
   transform: translate(-50%, -50%);
-  transition: 0.2s;
-  opacity: 0.9;
 }
 
 .zone.correct {
-  background: rgba(180, 255, 200, 0.4);
-  border: 1px solid rgba(100, 200, 140, 0.6);
+  background: #d4ffd9;
+}
+
+/* PRODUCT MODE — guaranteed to apply */
+.products .zone {
+  width: 80px !important;
+  height: 22px !important;
+
+  font-size: 7px !important;
+  padding: 0 !important;
+
+  border-radius: 5px !important;
+
+  transform: translate(-50%, -40%) !important;
+}
+
+/* SPLIT FIX */
+.products .split-zone {
+  width: 22px !important;
+  height: 22px !important;
+
+  transform: translate(-50%, -50%) !important;
 }
 
 /* CHOICES */
@@ -118,102 +110,172 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 15px;
 }
 
 .choice {
   margin: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  user-select: none;
+}
 
-  height: 28px;
-  padding: 0 14px;
+.choice.selected {
+  background: #eee;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  border-radius: 10px; 
+.hidden {
+  display: none;
+}
 
+.popup-card {
   background: white;
-  border: 1px solid #ddd;
+  padding: 28px;
+  border-radius: 18px;
+  width: 280px;
 
-  cursor: grab;
-  user-select: none;
+  font-family: 'Glacial', sans-serif;
 
-  font-size: 13px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: center;
 
-  transition: 0.2s;
+  animation: popIn 0.25s ease;
 }
 
-.choice:hover {
-  transform: scale(1.05);
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  #background {
-    width: 95vw;
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
   }
-
-  .zone {
-    width: 100px;
-    height: 26px;
-  }
-
-  .choice {
-    font-size: 12px;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-/* MOBILE TOUCH IMPROVEMENTS */
-@media (max-width: 600px) {
-
-  button {
-    padding: 12px 20px;
-    font-size: 16px; /* easier tapping */
-  }
-
-  .zone {
-    width: 120px;
-    height: 32px;
-  }
-
-  .choice {
-    height: 32px;
-    font-size: 14px;
-  }
-
+.popup-options {
+  display: flex;
+  justify-content: space-between;
 }
 
-/* MOBILE TOUCH IMPROVEMENTS */
-@media (max-width: 600px) {
-
-  button {
-    padding: 12px 20px;
-    font-size: 16px; /* easier tapping */
-  }
-
-  .zone {
-    width: 120px;
-    height: 32px;
-  }
-
-  .choice {
-    height: 32px;
-    font-size: 14px;
-  }
-
+.popup-option {
+  width: 48%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.pathway-section {
-  margin-top: 25px;
+.popup-option img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  padding: 6px;
+  background: white;
 }
 
-.pathway-section h2 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  font-weight: normal;
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
-.pathway-section h2 {
-  opacity: 0.8;
+.popup-buttons button {
+  width: 48%;
+}
+
+/* GAME LAYOUT */
+#game {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ENZYME INFO BOX */
+#enzyme-info {
+  position: absolute;
+  right: -220px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+  padding: 12px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+#enzyme-info.hidden {
+  display: none;
+}
+
+#enzyme-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.rate-limit {
+  margin-top: 8px;
+  color: #d11;
+  font-weight: bold;
+}
+
+/* HARDCORE DISABLED */
+button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  position: relative;
+}
+
+button.disabled:hover::after {
+  content: "Coming soon!";
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  background: black;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* ENZYME MODE CLEAN */
+#game-container:not(.products) .zone {
+  width: 95px;
+  height: 24px;
+
+  font-size: 10px;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* ENZYME MODE CLEAN FIX */
+#game-container:not(.products) .zone {
+  width: 95px;
+  height: 24px;
+  font-size: 10px;
+  transform: translate(-50%, -50%);
 }

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,36 +8,40 @@
 </head>
 <body>
 
-<!-- HOME SCREEN -->
-
 <div id="home">
 
   <div id="home-header">
-    <h1>GlycoCylco</h1>
+    <h1>GlycoCyclo</h1>
     <img src="assets/glucose.png" id="glucose-hero">
   </div>
 
   <p>
-    Drag or tap to match enzymes or molecules.<br><br>
-    If you're feeling confident, try <b>hardcore mode!</b>
+    Drag or tap to complete the carbohydrate metabolism processes.<br><br>
+    If you're feeling confident, try <b>hardcore mode</b>!
   </p>
 
+  <!-- GLYCOLYSIS -->
   <div class="pathway-section">
     <h2>Glycolysis</h2>
-    <p class="coming-soon">
-      (CAC and Gluconeogenesis coming soon!)
-    </p>
+    <button onclick="startGame('glycolysis','enzymes')">Enzymes</button>
+    <button onclick="startGame('glycolysis','products')">Products</button>
+    <button class="disabled">Hardcore</button>
+  </div>
 
-<button onclick="startGame('glycolysis','enzymes')">
-  Enzymes
-</button>
+  <!-- GLUCONEOGENESIS -->
+  <div class="pathway-section">
+    <h2>Gluconeogenesis</h2>
+    <button class="disabled">Enzymes</button>
+    <button class="disabled">Products</button>
+    <button class="disabled">Hardcore</button>
+  </div>
 
-<button onclick="startGame('glycolysis','products')">
-  Products
-</button>
-
-<button class="disabled">Hardcore</button>
-
+  <!-- CAC -->
+  <div class="pathway-section">
+    <h2>Citric Acid Cycle</h2>
+    <button onclick="startGame('cac','enzymes')">Enzymes</button>
+    <button class="disabled">Products</button>
+    <button class="disabled">Hardcore</button>
   </div>
 
 </div>
@@ -46,17 +49,14 @@
 <!-- GAME -->
 
 <div id="game" style="display:none;">
-  <h2 id="mode-title"></h2>
-
   <div id="game-container">
     <img id="background" src="">
     <div id="overlay"></div>
 
-<div id="enzyme-info" class="hidden">
-  <h4 id="enzyme-title"></h4>
-  <p id="enzyme-desc"></p>
-</div>
-
+    <div id="enzyme-info" class="hidden">
+      <h4 id="enzyme-title"></h4>
+      <p id="enzyme-desc"></p>
+    </div>
   </div>
 
   <div id="choices"></div>
@@ -65,49 +65,8 @@
   <button onclick="goHome()">← Back</button>
 </div>
 
-<!-- STRUCTURE POPUP -->
-
-<div id="structure-popup" class="popup hidden">
-  <div class="popup-card">
-    <h3>Choose Structure</h3>
-
-<div class="popup-options">
-  <div onclick="selectStructure('simple')" class="popup-option">
-    <img src="assets/simple.png">
-    <p>Simple</p>
-  </div>
-
-  <div onclick="selectStructure('real')" class="popup-option">
-    <img src="assets/real.png">
-    <p>Molecule</p>
-  </div>
-</div>
-
-  </div>
-</div>
-
-<!-- SCORE POPUP -->
-
-<div id="score-popup" class="popup hidden">
-  <div class="popup-card">
-
-<h3 id="result-title"></h3>
-
-<p id="score-text"></p>
-<p id="accuracy-text"></p>
-
-<div class="popup-buttons">
-  <button onclick="replayGame()">Try Again</button>
-  <button onclick="goHome()">Home</button>
-</div>
-
-  </div>
-</div>
-
 <script src="core.js"></script>
-
 <script src="enzymes.js"></script>
-
 <script src="products.js"></script>
 
 </body>

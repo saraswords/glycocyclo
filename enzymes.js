@@ -1,19 +1,3 @@
-window.startGame = function(pathway, mode){
-  document.getElementById("score-popup").classList.add("hidden");
-
-  // ✅ RESET ENZYME INFO
-  const box = document.getElementById("enzyme-info");
-  box.classList.add("hidden");
-  document.getElementById("enzyme-title").innerText = "";
-  document.getElementById("enzyme-desc").innerText = "";
-
-  if(mode === "enzymes"){
-    startEnzymeGame();
-  } else {
-    startProductGame();
-  }
-};
-
 function startEnzymeGame(){
   const data = getData();
 
@@ -22,7 +6,11 @@ function startEnzymeGame(){
   document.getElementById("game").style.display = "block";
 
   document.getElementById("background").src =
-    "assets/glycolysis_enzyme_blank.png";
+    currentPathway === "glycolysis"
+      ? "assets/glycolysis_enzyme_blank.png"
+      : currentPathway === "gluconeogenesis"
+      ? "assets/gluconeogenesis_enzyme_blank.png"
+      : "assets/cac_enzyme_blank.png";
 
   renderEnzymeZones(data);
   renderEnzymeChoices(data);
@@ -32,20 +20,33 @@ function renderEnzymeZones(data){
   const overlay = document.getElementById("overlay");
   overlay.innerHTML = "";
 
-  const positions = [
-    0.085,
-    0.175,
-    0.27,
-    0.355,
-    0.44,
-    0.525,
-    0.63,
-    0.725,
-    0.815
+  // ✅ CAC (FIXED — no duplicate overlay declaration)
+  if(currentPathway === "cac"){
+    const positions = [
+      {x:0.40, y:0.22}, // Citrate synthase
+      {x:0.63, y:0.27}, // Aconitase
+      {x:0.72, y:0.52}, // Isocitrate dehydrogenase
+      {x:0.63, y:0.73}, // α-KG dehydrogenase
+      {x:0.47, y:0.80}, // Succinyl-CoA synthetase
+      {x:0.30, y:0.71}, // Succinate dehydrogenase
+      {x:0.24, y:0.54}, // Fumarase
+      {x:0.27, y:0.37}  // Malate dehydrogenase
+    ];
+
+    data.forEach((step, i) => {
+      createZone(step, positions[i], "enzyme");
+    });
+
+    return;
+  }
+
+  // DEFAULT (unchanged)
+  const positionsDefault = [
+    0.085, 0.175, 0.27, 0.355, 0.44,
+    0.525, 0.63, 0.725, 0.815
   ];
 
   const seen = new Set();
-
   let index = 0;
 
   data.forEach(step => {
@@ -55,7 +56,7 @@ function renderEnzymeZones(data){
 
     createZone(step, {
       x: 0.80,
-      y: positions[index]
+      y: positionsDefault[index]
     }, "enzyme");
 
     index++;

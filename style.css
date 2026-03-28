@@ -244,14 +244,14 @@ button:hover {
 /* HARDCORE DISABLED */
 button.disabled {
   opacity: 0.5;
-  pointer-events: none;
+  cursor: not-allowed;
   position: relative;
 }
 
 button.disabled:hover::after {
   content: "Coming soon!";
   position: absolute;
-  top: -25px;
+  top: -28px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 11px;
@@ -259,6 +259,7 @@ button.disabled:hover::after {
   color: white;
   padding: 4px 8px;
   border-radius: 6px;
+  white-space: nowrap;
 }
 
 /* ENZYME MODE CLEAN */
